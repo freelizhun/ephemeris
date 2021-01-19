@@ -1,0 +1,31 @@
+[root@master3 lz]# curl -X GET -u "630066798@qq.com" http://192.168.108.109:30007/api/authenticate/baseauth
+Enter host password for user '630066798@qq.com':
+{"api_key": "4c14537bc945b89605e0faf1c68c5b2f"}
+
+root@ec9b9c1849dc:/home/ubuntu# source planemo-virtualenv/bin/activate
+(planemo-virtualenv) root@ec9b9c1849dc:/home/ubuntu# cat tools_list.yaml 
+api_key: 4c14537bc945b89605e0faf1c68c5b2f
+galaxy_instance: http://192.168.108.109:30007
+tools:
+- name: seqtk_seq
+  owner: planemo
+  tool_panel_section_id: lammps_manipulation
+  tool_shed_url: http://192.168.108.109:9009
+  
+  
+(planemo-virtualenv) root@ec9b9c1849dc:/home/ubuntu# shed-tools install -t tools_list.yaml -g "http://192.168.108.109:30007"
+Storing log file in: /tmp/ephemeris_rmAF_g
+(1/1) Installing repository seqtk_seq from planemo to section "lammps_manipulation" at revision 4f78b9f85779 (TRT: 0:00:00.070702)
+        Repository seqtk_seq is already installed.
+        repository seqtk_seq installed successfully (in 0:00:00.119942) at revision 4f78b9f85779
+Installed repositories (1): [('seqtk_seq', None)]
+Skipped repositories (0): []
+Errored repositories (0): []
+All repositories have been installed.
+Total run time: 0:00:00.190995
+
+
+参考网址：
+https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/README.md
+
+https://github.com/galaxyproject/ephemeris
